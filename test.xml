@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestSuite" parallel="false">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
+	</listeners>
+	<parameter name="browser" value="chrome"></parameter>
+	<!-- <test name="Test1" enabled="true" time-out="10000"> <classes> <class 
+		name="seleniumTestNG.TestNGTests"> <methods> <exclude name="test10"></exclude> 
+		</methods> </class> </classes> </test> -->
+	<test name="GroupTest">
+		<groups>
+			<define name="Regreession1">
+				<include name="LowPriority"></include>
+				<include name="Sanity"></include>
+				
+			</define>
+			<define name="Regreession2">
+				<include name="Sanity"></include>
+			</define>
+			<run>
+				<include name="Regreession1"></include>
+				<exclude name="Regreession2"></exclude>
+			</run>
+		</groups>
+		<classes>
+
+			<class name="seleniumTestNG.GroupTests">
+
+			</class>
+		</classes>
+
+	</test>
+	<suite-files>
+		<!-- <suite-file path="./"></suite-file> -->
+	</suite-files>
+</suite>
